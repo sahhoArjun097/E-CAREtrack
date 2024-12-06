@@ -1,5 +1,6 @@
 # Node.js dependencies
 /backend/node_modules
+node_modules
 
 
 # Logs
@@ -10,6 +11,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Environment files
+config/config.env
 .env
 
 # Build output
