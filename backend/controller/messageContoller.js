@@ -5,7 +5,7 @@ import ErrorHandler from "../middlewares/errorMiddleware.js"; // Corrected impor
 export const sendMessage = catchAsyncError(async (req, res, next) => {
     const { firstName, lastName, email, phone, message } = req.body; // Take request from the user like frontend or Postman
     if (!firstName || !lastName || !email || !phone || !message) { // Check if something is missing
-        return next(new ErrorHandler("Please fill full  form", 400)); // Corrected "ErroHandler" to "ErrorHandler"
+        return next(new ErrorHandler("Please fill full form", 400)); // Corrected "ErroHandler" to "ErrorHandler"
         
     }
     
@@ -18,7 +18,7 @@ export const sendMessage = catchAsyncError(async (req, res, next) => {
     
 });
 
-
+    
 export const getAllMessages = catchAsyncError(async(req,res,next)=>{
     const message = await Message.find();
     res.status(200).json({

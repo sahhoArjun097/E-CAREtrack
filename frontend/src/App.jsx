@@ -1,33 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import { BrowserRouter as Router ,Routes , Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Appointments from "./pages/Appointments"
+import AboutUs from "./pages/AboutUs"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Navbar from "./components/Navbar"
+import { useContext, useEffect } from "react"
+import { Context } from "./main"
+import axios from "axios"
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const {isAuthenticated,setIsAuthenticated,setUser} = useContext(Context);
+  useEffect(()=>{
+    const fetchUser = async ()=>{
+        try {
+          const res = await axios.get("http://localhost:4000/api/v1/user/patient/me",{withCredentials:true});
+          setIsAuthenticated(true)
+          // console.log(res)
+          setUser(res.data.user)
+        } catch (error) {
+          setIsAuthenticated(false)
+          // setUser({});
+          // alert(error.response.data.message)
+          // console.log(error)
+          
+        }
+    };
+    fetchUser();
+  },[]);
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/appointments" element={<Appointments/>}/>
+        <Route path="/aboutus" element={<AboutUs/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+      </Routes>
+      <ToastContainer position="top-center "/>
+    </Router>
     </>
   )
 }

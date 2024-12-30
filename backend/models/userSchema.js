@@ -61,17 +61,19 @@ docAvatar:{
 }
 });
 
+// now the password that user entered get dectrypted and stored in database
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")){
         next()
     }
     this.password = await bcrypt.hash(this.password,10)
 });
-
+// now the password that user put for login is checked by the password that is stored in database
 userSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword,this.password);
     
 };
+
 userSchema.methods.generateJsonWebToken = function(){
     return jwt.sign({id:this.id},process.env.JWT_SECRET_KEY,{
         expiresIn:process.env.JWT_EXPIRES,

@@ -3,6 +3,8 @@ import ErrorHandler from "../middlewares/errorMiddleware.js";
 import { User } from "../models/userSchema.js"
 import { generateToken } from "../utils/jwtToken.js"
 import cloudinary from "cloudinary"
+
+// ADDIGN PATIENT 
 export const patientRegister = catchAsyncError(async (req, res, next) => {
     const {
         firstName,
@@ -15,14 +17,14 @@ export const patientRegister = catchAsyncError(async (req, res, next) => {
         nic,
         role } = req.body;
     if (
-        !firstName ||
-        !lastName ||
-        !email ||
-        !phone ||
-        !password ||
-        !gender ||
-        !dob ||
-        !role) {
+            !firstName ||
+            !lastName ||
+            !email ||
+            !phone ||
+            !password ||
+            !gender ||
+            !dob ||
+            !role) {
         return next(new ErrorHandler("please fill full form", 400));
     }
     let user = await User.findOne({ email });
@@ -40,15 +42,12 @@ export const patientRegister = catchAsyncError(async (req, res, next) => {
         dob,
         nic,
         role
-
     });
-
     generateToken(user, "User register", 200, res)
     //    res.status(200).json({
     //     success:true,
     //     message:"User register"
     //    })
-
 });
 export const login = catchAsyncError(async (req, res, next) => {
     const {
@@ -82,6 +81,8 @@ export const login = catchAsyncError(async (req, res, next) => {
 
 
 });
+
+// ADDING ADMIN
 export const addNewAdmin = catchAsyncError(async (req, res, next) => {
     const {
         firstName, lastName, email, phone, password, gender, dob, nic } = req.body;
@@ -143,7 +144,7 @@ export const logoutPatient = catchAsyncError(async (req, res, next) => {
         message: "Patient  logout successfully"
     })
 })
-
+// adding docter
 
 export const addNewDoc = catchAsyncError(async (req, res, next) => {
     if (!req.files || Object.keys(req.files).length === 0) {
