@@ -28,8 +28,8 @@ const AboutUs = () => {
 
       {/* Features Section */}
       <div className="bg-gradient-to-b  from-pink-100 via-purple-100 to-blue-100 py-12">
-        <div className=" px-24 md:px-20">
-        <h2 className="text-4xl md:text-6xl font-bold  text-blue-900 mb-8">
+        <div className=" px-16 md:px-20">
+        <h2 className="text-3xl md:text-6xl font-bold  text-blue-900 mb-8">
         Key Features
         </h2>
 

@@ -28,7 +28,7 @@ const Login = () => {
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      alert(error.response?.data?.message || "Login failed");
+      alert(error.response?.data?.message);
     }
   };
 
@@ -39,6 +39,8 @@ const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
+
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form

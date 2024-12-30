@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="   md:absolute flex  w-screen  items-center justify-between px-8 py-3 h-[60px] ">
             <div className="text-xl font-bold">CAREtrack</div>
             <div className={`navLinks ${show ? "flex" : "hidden"} md:flex md:items-center`}>
-                <div className="flex flex-col md:flex-row md:gap-9">
+                <div className="flex font-semibold flex-col md:flex-row md:gap-9">
                     <Link to="/" className="hover:text-blue-300 transition duration-300">
                         HOME
                     </Link>
@@ -57,7 +57,7 @@ const Navbar = () => {
 
                 ) : (
                     <button
-                        className="bg-green-500  hover:bg-green-600 text-white px-4 py-2 rounded-3xl  text-center transition duration-300"
+                        className="bg-green-500   hover:bg-green-600 text-white px-4 py-2 rounded-3xl  text-center transition duration-300"
                         onClick={gotologin}
                     >
                         <h1 className="font-bold">Login</h1>

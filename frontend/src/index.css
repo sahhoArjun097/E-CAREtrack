@@ -27,7 +27,7 @@
   position: absolute;
   width: 45px;
   height: 45px;
-  border: none;
+  border: 2px solid black;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
@@ -37,6 +37,7 @@
   background-color: rgb(251, 106, 106);
 }
 
+
 /* plus sign */
 .sign {
   width: 100%;
@@ -44,6 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .sign svg {
