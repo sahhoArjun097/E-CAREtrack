@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import "../index.css";
-import Home from "./Home";
 import Appointmentsbook from "../components/Appointmentsbook";
 
 const Appointment = () => {
   return (
     <>
     
-    <div className="flex flex-col bg-gradient-to-b h-screen  from-blue-50 via-purple-50 to-pink-50 md:flex-row items-center px-6 md:px-12">
+    <div className="flex flex-col bg-gradient-to-b h-screen  from-blue-100 via-purple-50 to-pink-100 md:flex-row items-center px-6 md:px-12">
       {/* Image Section */}
       <div>
         

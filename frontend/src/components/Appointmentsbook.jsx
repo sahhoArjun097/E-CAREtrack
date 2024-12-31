@@ -11,7 +11,7 @@ const Appointmentsbook = () => {
     const [appointment,setAppointment] = useState("")
     const [gender,setGender]= useState("") 
     return (
-    <div>Appointmentsbook</div>
+    <div className="flex flex-col bg-gradient-to-b h-screen  to-blue-100 via-purple-50 from-pink-100 md:flex-row items-center px-6 md:px-12">Appointmentsbook</div>
   )
 }
 
