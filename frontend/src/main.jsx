@@ -27,6 +27,7 @@ const AppWrapper = () => {
   );
 };
 
+// dfjro4r fewjf4 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AppWrapper />
