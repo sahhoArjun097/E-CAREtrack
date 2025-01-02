@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Appointment from "./pages/Appointments"
 import AboutUs from "./pages/AboutUs"
 import Login from "./pages/Login"
+import Docter from "./pages/Docter"
 import Register from "./pages/Register"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,6 +42,8 @@ function App() {
         <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/docter" element={<Docter/>}/>
+        
       </Routes>
       <ToastContainer position="top-center "/>
     </Router>
