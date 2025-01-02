@@ -93,20 +93,22 @@ export const addNewAdmin = catchAsyncError(async (req, res, next) => {
         !phone ||
         !password ||
         !gender ||
-        !dob
+        !dob||
+        !nic
     ) {
         return next(new ErrorHandler("please fill full form", 400));
     }
     const isRegister = await User.findOne({ email });
     if (isRegister) {
-        return next(new ErrorHandler("Admin with this email allready exist", 400));
+        return next(new ErrorHandler("Admin with this email already exist", 400));
 
     }
     const admin = await User.create({ firstName, lastName, email, phone, password, gender, dob, nic, role: "Admin" });
-    res.status(200).json({
-        success: true,
-        message: "admin register"
-    })
+    generateToken(admin, "admin register", 200, res)
+    // res.status(200).json({
+    //     success: true,
+    //     message: "admin register"
+    // })
 
 })
 

@@ -43,3 +43,5 @@ const Biography = ({title,imageUrl}) => {
 }
 
 export default Biography
+
+
