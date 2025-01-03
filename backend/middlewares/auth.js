@@ -13,8 +13,6 @@ import jwt from "jsonwebtoken"
 //         return next(new ErrorHandler(`${req.user.role} not authorized for  this resource`, 403));
 //     }
 //     next();
-
-
 // });
 
 export const isPatientAuthenticated = catchAsyncError(async (req, res, next) => {
@@ -35,7 +33,9 @@ export const isPatientAuthenticated = catchAsyncError(async (req, res, next) => 
 });
 export const isAdminAuthenticated = catchAsyncError(async (req, res, next) => {
     const token = req.cookies.adminToken;
-    // console.log(req.cookies)
+    console.log(req.cookies)
+    // console.log("Admin Token Generated:", token);
+
     if (!token) {
         return next(new ErrorHandler("admin Not Authentciated", 400))
 
@@ -49,5 +49,3 @@ export const isAdminAuthenticated = catchAsyncError(async (req, res, next) => {
 
 
 });
-
-
