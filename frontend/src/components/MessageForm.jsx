@@ -92,7 +92,7 @@ const MessageForm = () => {
               className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex  justify-center">
             <button
               type="submit"
               className="px-6 py-3 bg-gradient-to-r from-purple-500 via-purple-700 to-purple-700 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2  focus:ring-opacity-50"
