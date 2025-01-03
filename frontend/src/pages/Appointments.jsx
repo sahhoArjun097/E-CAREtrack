@@ -6,11 +6,8 @@ const Appointment = () => {
   return (
     <>
     
-    <div className="flex flex-col bg-gradient-to-b h-screen  from-blue-100 via-purple-50 to-pink-100 md:flex-row items-center px-6 md:px-12">
-      {/* Image Section */}
-      <div>
-        
-      </div>
+    <div className="flex flex-col bg-gradient-to-b md:h-screen  from-blue-100 via-purple-50 to-pink-100 md:flex-row items-center px-6 md:px-12">
+    
       <div className="md:w-1/2 relative">
         <div className="w-full h-full flex justify-center items-center">
           <img
@@ -21,7 +18,7 @@ const Appointment = () => {
         </div>
       </div>
       {/* Content Section */}
-      <div className="md:w-1/2 text-center md:text-left space-y-6">
+      <div className="md:w-1/2  p-4 text-center md:text-left space-y-6">
         <h1 className="text-4xl md:text-6xl font-bold text-blue-900">
           Book Your Appointment
         </h1>

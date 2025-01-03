@@ -13,7 +13,7 @@ const Appointmentsbook = () => {
   const [docterFirstName, setDocterFirstName] = useState("");
   const [docterLastName, setDocterLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [hasVisited, setHasVisited] = useState("");
+  const [hasVisited, setHasVisited] = useState(false);
   const [docters, setDocters] = useState([]);
   const departmentsArray = [
     "Pediatrics",
@@ -27,34 +27,87 @@ const Appointmentsbook = () => {
       { withCredentials: true }
     );
     setDocters(data.docs);
-    console.log(data.docs)
-    console.log(docters[0])
   };
   useEffect(() => {
     fetchDocters();
 
   }, []);
+  const handleAppointmentDateChange = (e) => {
+    const rawDate = e.target.value.replace(/[^\d]/g, ""); // Remove non-numeric characters
+    if (rawDate.length <= 8) {
+      let formattedDate = rawDate;
+      if (rawDate.length > 2) {
+        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2)}`;
+      }
+      if (rawDate.length > 4) {
+        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2, 4)}/${rawDate.slice(4)}`;
+      }
+      setAppointmentDate(formattedDate);
+    }
+  }
+
+  const handleDateChange = (e) => {
+    const rawDate = e.target.value.replace(/[^\d]/g, ""); // Remove non-numeric characters
+    if (rawDate.length <= 8) {
+      let formattedDate = rawDate;
+      if (rawDate.length > 2) {
+        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2)}`;
+      }
+      if (rawDate.length > 4) {
+        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2, 4)}/${rawDate.slice(4)}`;
+      }
+      setDob(formattedDate);
+    }
+  }
   const handleAppointments = async (e) => {
     e.preventDefault();
     // Add form submission logic here
-    console.log({
-      firstName,
-      lastName,
-      email,
-      phone,
-      nic,
-      dob,
-      gender,
-      appointmentDate,
-      department,
-      docterFirstName,
-      docterLastName,
-      address,
-      hasVisited,
-    });
+    try {
+      const hasVisitedBool = Boolean(hasVisited);
+      const { data } = await axios.post(
+        "http://localhost:4000/api/v1/appointment/post",
+        {
+          firstName,
+          lastName,
+          email,
+          phone,
+          nic,
+          dob,
+          gender,
+          appointment_date: appointmentDate,
+          department,
+          doctor_firstName: docterFirstName,
+          doctor_lastName: docterLastName,
+          hasVisited: hasVisitedBool,
+          address,
+        },
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      alert(data.message);
+      setFirstName(""),
+        setLastName(""),
+        setEmail(""),
+        setPhone(""),
+        setNic(""),
+        setDob(""),
+        setGender(""),
+        setAppointmentDate(""),
+        setDepartment(""),
+        setDocterFirstName(""),
+        setDocterLastName(""),
+        setHasVisited(""),
+        setAddress("");
+      
+    } catch (error) {
+      alert(error.response.data.message)
+      
+    }
   };
   return (
-    <div className=" mx-auto p-16   bg-gradient-to-b h-full w-screen to-blue-100 via-purple-50 from-pink-100 shadow-md rounded-lg">
+    <div className=" mx-auto  p-16 md:p-24  bg-gradient-to-b h-full w-screen to-blue-100 via-purple-50 from-pink-100 shadow-md rounded-lg">
       <div className="flex flex-col gap-5">
         <h1 className="text-4xl md:text-6xl font-bold text-blue-900">Book an Appointment</h1>
         <form onSubmit={handleAppointments} className="space-y-6">
@@ -92,22 +145,27 @@ const Appointmentsbook = () => {
             />
           </div>
 
-          <input
-            type="text"
-            placeholder="NIC"
-            value={nic}
-            onChange={(e) => setNic(e.target.value)}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
-              type="date"
-              placeholder="Date of Birth"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
+              type="text"
+              placeholder="NIC"
+              value={nic}
+              onChange={(e) => setNic(e.target.value)}
               className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+
+            <input
+              type="text"
+              placeholder="Date of Birth"
+              value={dob}
+              onChange={handleDateChange}
+              // onChange={(e) => setDob(e.target.value)}
+              className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
@@ -118,6 +176,16 @@ const Appointmentsbook = () => {
               <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
+
+
+            <input
+              type="text"
+              placeholder="Appointment Date"
+              value={appointmentDate}
+              onChange={handleAppointmentDateChange}
+              className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+
           </div>
 
           <div className=" flex gap-3">
@@ -163,37 +231,32 @@ const Appointmentsbook = () => {
             </select>
           </div>
 
-          <textarea
+          <textarea 
             placeholder="Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
           ></textarea>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className=" w-full gap-2 flex ">
+          <p style={{ marginBottom: 0 }}>Have you visited before?</p>
             <input
-              type="date"
-              placeholder="Appointment Date"
-              value={appointmentDate}
-              onChange={(e) => setAppointmentDate(e.target.value)}
-              className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+              type="checkbox"
+              checked={hasVisited}
+              onChange={(e) => setHasVisited(e.target.checked)}
+              style={{ flex: "none", width: "20px" }}
             />
-            <select
-              value={hasVisited}
-              onChange={(e) => setHasVisited(e.target.value)}
-              className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-              <option value="">Has Visited Before?</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
+
+
+       
           </div>
+          
           <div className="w-full justify-center items-center flex ">
             <button
               type="submit"
-              className=" bg-blue-500 text-white py-3 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="px-6 py-3 bg-gradient-to-r from-purple-500 via-purple-700 to-purple-700 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2  focus:ring-opacity-50"
             >
-              Submit Appointment
+              Send Appointment
             </button>
           </div>
         </form>
@@ -203,3 +266,4 @@ const Appointmentsbook = () => {
 };
 
 export default Appointmentsbook;
+
