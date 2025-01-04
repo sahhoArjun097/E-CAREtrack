@@ -61,7 +61,7 @@ const Appointmentsbook = () => {
   }
   const handleAppointments = async (e) => {
     e.preventDefault();
-
+    // Add form submission logic here
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
@@ -76,8 +76,8 @@ const Appointmentsbook = () => {
           gender,
           appointment_date: appointmentDate,
           department,
-          doctor_firstName: docterFirstName,
-          doctor_lastName: docterLastName,
+          docter_firstName: docterFirstName,
+          docter_lastName: docterLastName,
           hasVisited: hasVisitedBool,
           address,
         },
@@ -266,4 +266,3 @@ const Appointmentsbook = () => {
 };
 
 export default Appointmentsbook;
-

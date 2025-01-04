@@ -32,7 +32,6 @@ export const postAppointmnet = catchAsyncError(async (req, res, next) => {
         !department ||
         !docter_firstName ||
         !docter_lastName ||
-        !hasVisited ||
         !address) {
         return next(new ErrorHandler("please fill full form", 400));
     }
