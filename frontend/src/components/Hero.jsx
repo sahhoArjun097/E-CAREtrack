@@ -5,7 +5,7 @@ import "../index.css";
 const Hero = ({ title, imageUrl }) => {
 
     return (
-        <div className="flex flex-col  md:flex-row items-center justify-between    px-6 md:px-12 ">
+        <div className="flex flex-col  md:flex-row items-center justify-between px-6 md:px-12 ">
             {/* Text Section */}
             <div className="md:w-1/2 text-center md:text-left space-y-6">
                 <h1 className="text-4xl md:text-6xl font-bold text-blue-900">
