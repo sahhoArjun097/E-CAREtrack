@@ -44,7 +44,6 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/docter" element={<Docter/>}/>
-        
       </Routes>
       <Footer/>
       
