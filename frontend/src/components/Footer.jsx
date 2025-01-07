@@ -26,7 +26,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="/appointments" className="text-gray-400 hover:text-teal-600 text-base">
-                  Appointment
+                  Appointments
                 </a>
               </li>
               <li>
