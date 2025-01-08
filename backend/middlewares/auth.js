@@ -33,7 +33,7 @@ export const isPatientAuthenticated = catchAsyncError(async (req, res, next) => 
 });
 export const isAdminAuthenticated = catchAsyncError(async (req, res, next) => {
     const token = req.cookies.adminToken;
-    console.log(req.cookies)
+    // console.log(req.cookies)
     // console.log("Admin Token Generated:", token);
 
     if (!token) {
