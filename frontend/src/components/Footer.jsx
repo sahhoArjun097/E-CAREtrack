@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-      <footer className="h-full w-full bg-gradient-to-t  from-black via-purple-50 to-black  border-gray-300">
+      <footer className="h-full w-full   border-gray-300">{/* bg-gradient-to-t  from-black via-purple-50 to-black */}
         <div className="container p-24 mx-auto flex flex-wrap justify-between items-start gap-12">
           {/* Logo and Description */}
           <div className="flex  flex-col items-start space-y-4">
