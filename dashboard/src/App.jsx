@@ -1,59 +1,14 @@
 
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// import { useContext, useEffect } from "react";
-// import { Context } from "./main";
-// import axios from "axios";
-// function App() {
-//   const { setIsAuthenticated, setUser } = useContext(Context);
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       try {
-//         const response = await axios.get("http://localhost:4000/api/v1/user/admin/me", {
-//           withCredentials: true
-//         });
-//         setIsAuthenticated(true);
-//         setUser(response.data.message);
-//       } catch (error) {
-//         // console.error("Error fetching user data:", error);
-//         setIsAuthenticated(false);
-//       }
-//     };
-//     fetchUser();
-//   }, []);
-
-
-
-//   return (
-//     <>
-//       <Routes>
-//         {/* <Navbar /> */}
-//         <Router>
-//          
-//         </Router>
-
-//       </Routes>
-
-
-
-//     </>
-//   )
-// }
-
-// export default App;
-
-
 import { BrowserRouter as Router ,Routes , Route } from "react-router-dom"
-import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import AddNewAdmin from "./components/AddNewAdmin";
-import AddNewDocters from "./components/AddNewDocters";
-import Message from "./components/Message";
 import Navbar from "./components/Navbar";
-import Docters from "./components/Docters";
 import { useContext, useEffect } from "react"
 import { Context } from "./main"
 import axios from "axios"
+import Dashboard from "./pages/Dashboard";
+import Docter from "./pages/Docter";
+import AddNewDocter from "./pages/AddNewDocter";
+import AddNewAdmin from "./pages/AddNewAdmin";
+import Message from "./pages/Message";
 
 
 function App() {
@@ -79,13 +34,12 @@ function App() {
     <Router>
       <Navbar/>
       <Routes>
-           < Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/addnewadmin" element={<AddNewAdmin />} />
-          <Route path="/addnewdoc" element={<AddNewDocters />} />
-          <Route path="/messages" element={<Message />} />
-          <Route path="/messages" element={<Message />} />
-          <Route path="/docter" element={<Docters />} /> 
+          <Route path="/docter" element={<Docter/>} />
+          <Route path="/" element={<Dashboard/>}/>
+          <Route path="/docter" element={<Docter/>}/>
+          <Route path="/addnewdoc" element={<AddNewDocter/>}/>
+          <Route path="/addnewadmin" element={<AddNewAdmin/>}/>
+          <Route path="/message" element={<Message/>}/>
        
       </Routes>
      

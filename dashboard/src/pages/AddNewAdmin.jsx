@@ -1,7 +1,8 @@
 
+
 function AddNewAdmin() {
   return (
-    <div>AddNewAdmin</div>
+    <div className="bg-black">AddNewAdmin</div>
   )
 }
 
