@@ -14,7 +14,7 @@ const Navbar = () => {
 
     }
     const handleLogOut = async () => {
-        console.log("dsudqwuihe")
+        // console.log("dsudqwuihe")
         try {
             const res = await axios.get("http://localhost:4000/api/v1/user/patient/logout", {
                 withCredentials: true,

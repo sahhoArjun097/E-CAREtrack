@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import con
+import {Context} from '../main'
 
 function Navbar() {
     const [show,setShow] = useState();

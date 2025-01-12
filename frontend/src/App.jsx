@@ -4,7 +4,6 @@ import Home from "./pages/Home"
 import Appointment from "./pages/Appointments"
 import AboutUs from "./pages/AboutUs"
 import Login from "./pages/Login"
-import Docter from "./pages/Docter"
 import Register from "./pages/Register"
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
