@@ -15,7 +15,7 @@ import axios from "axios"
 import Footer from "./components/Footer"
 
 function App() {
-  const {isAuthenticated,setIsAuthenticated,setUser} = useContext(Context);
+  const {setIsAuthenticated,setUser} = useContext(Context);
   useEffect(()=>{
     const fetchUser = async ()=>{
         try {
@@ -43,7 +43,6 @@ function App() {
         <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/docter" element={<Docter/>}/>
       </Routes>
       <Footer/>
       
