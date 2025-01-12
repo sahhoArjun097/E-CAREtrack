@@ -6,8 +6,8 @@ import AboutUs from "./pages/AboutUs"
 import Login from "./pages/Login"
 import Docter from "./pages/Docter"
 import Register from "./pages/Register"
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "./components/Navbar"
 import { useContext, useEffect } from "react"
 import { Context } from "./main"
@@ -47,7 +47,7 @@ function App() {
       </Routes>
       <Footer/>
       
-      <ToastContainer position="top-center "/>
+     
     </Router>
     </>
   )
