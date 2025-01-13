@@ -9,6 +9,7 @@ import Docter from "./pages/Docter";
 import AddNewDocter from "./pages/AddNewDocter";
 import AddNewAdmin from "./pages/AddNewAdmin";
 import Message from "./pages/Message";
+import Login from "./pages/Login";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           setUser(res.data.user)
         } catch (error) {
           setIsAuthenticated(false)
+          console.log(error)
          
         }
     };
@@ -34,9 +36,9 @@ function App() {
     <Router>
       <Navbar/>
       <Routes>
-          <Route path="/docter" element={<Docter/>} />
           <Route path="/" element={<Dashboard/>}/>
-          <Route path="/docter" element={<Docter/>}/>
+          <Route path="/docter" element={<Docter/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/addnewdoc" element={<AddNewDocter/>}/>
           <Route path="/addnewadmin" element={<AddNewAdmin/>}/>
           <Route path="/message" element={<Message/>}/>

@@ -100,10 +100,10 @@ const Appointmentsbook = () => {
         setDocterLastName(""),
         setHasVisited(""),
         setAddress("");
-      
+
     } catch (error) {
       alert(error.response.data.message)
-      
+
     }
   };
   return (
@@ -231,7 +231,7 @@ const Appointmentsbook = () => {
             </select>
           </div>
 
-          <textarea 
+          <textarea
             placeholder="Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -239,7 +239,7 @@ const Appointmentsbook = () => {
           ></textarea>
 
           <div className=" w-full gap-2 flex ">
-          <p style={{ marginBottom: 0 }}>Have you visited before?</p>
+            <p style={{ marginBottom: 0 }}>Have you visited before?</p>
             <input
               type="checkbox"
               checked={hasVisited}
@@ -248,9 +248,9 @@ const Appointmentsbook = () => {
             />
 
 
-       
+
           </div>
-          
+
           <div className="w-full justify-center items-center flex ">
             <button
               type="submit"
