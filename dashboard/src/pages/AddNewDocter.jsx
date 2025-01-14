@@ -280,11 +280,19 @@ const AddNewDoctor = () => {
       alert(error.response.data.message);
     }
   };
-
   if (!isAuthenticated) {
-    return <Navigate to={"/login"} />;
-  }
+    return (
+      <div className="w-full min-h-screen md:px-40  bg-slate-700 flex justify-center items-center">
+        <div className="w-full   px-52 justify-center items-center ">
+        <p className="text-xl font-semibold text-red-500">
+          Access denied. Please log in as an admin to view this page.
+        </p>
 
+        </div>
+        
+      </div>
+    );
+  }
   return (
     <section className="min-h-screen bg-gray-100 flex justify-center items-center">
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-4xl">

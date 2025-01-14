@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { Context } from "../main";
 
 const Doctor = () => {
   const [doctors, setDoctors] = useState([]);
+  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
   const fetchDoctors = async () => {
     try {
       const { data } = await axios.get(
@@ -10,6 +13,7 @@ const Doctor = () => {
         { withCredentials: true }
       );
       setDoctors(data.docs);
+      // setIsAuthenticated(true);
       //console.log(data.docs); 
     } catch (error) {
       console.error("Error fetching doctors:", error);
@@ -19,7 +23,19 @@ const Doctor = () => {
   useEffect(() => {
     fetchDoctors();
   }, []);
+  if (!isAuthenticated) {
+    return (
+      <div className="w-full min-h-screen md:px-40  bg-slate-700 flex justify-center items-center">
+        <div className="w-full   px-52 justify-center items-center ">
+        <p className="text-xl font-semibold text-red-500">
+          Access denied. Please log in as an admin to view this page.
+        </p>
 
+        </div>
+        
+      </div>
+    );
+  }
   return (
     <div className="w-full min-h-screen p-10 md:pl-52">
       <div className="w-full h-full ">
