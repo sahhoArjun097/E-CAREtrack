@@ -10,11 +10,13 @@ import userRouter from "./router/userRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 config({ path: "./config/config.env" });
-app.use(cors({
-  origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
-  methods: ["GET", "DELETE", "POST", "PUT"],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+//   methods: ["GET", "DELETE", "POST", "PUT"],
+//   credentials: true,
+// }));
+app.use(cors({ origin: '*', methods: ["GET", "DELETE", "POST", "PUT"], credentials: true }));
+
 app.use(cookieParser())
 app.use(express.json())// use to transform data into json data as in the form of string
 app.use(express.urlencoded({ extended: true }));

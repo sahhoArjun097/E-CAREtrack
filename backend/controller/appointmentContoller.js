@@ -35,15 +35,25 @@ export const postAppointmnet = catchAsyncError(async (req, res, next) => {
         !address) {
         return next(new ErrorHandler("please fill full form", 400));
     }
+    console.log(docter_firstName ,docter_lastName)
+    const ss = await User.findOne({
+        firstName: docter_firstName,
+        lastName: docter_lastName,
+        role: "Docter",
+        docterDepatement: department,
+
+    })
+    console.log(ss);
+
     const isConflict = await User.find({
         firstName: docter_firstName,
         lastName: docter_lastName,
         role: "Docter",
-        DocterDepatement: department,
+        docterDepatement: department,
 
     })
     if (isConflict.length === 0) {
-        return next(new ErrorHandler("docter not found", 404))
+        return next(new ErrorHandler("docterr not found", 404))
     }
     if (isConflict.length > 1) {
         return next(new ErrorHandler("docter conflict  please connect through email", 404))

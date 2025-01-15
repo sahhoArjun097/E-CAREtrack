@@ -200,8 +200,9 @@
 // }
 
 // export default AddNewDoctor;
+
+// import { Navigate, useNavigate } from "react-router-dom";
 import  { useContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 import { Context } from "../main";
 import axios from "axios";
 
@@ -216,11 +217,11 @@ const AddNewDoctor = () => {
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
-  const [doctorDepartment, setDoctorDepartment] = useState("");
+  const [docterDepatement, setDocterDepatment] = useState("");
   const [docAvatar, setDocAvatar] = useState("");
   const [docAvatarPreview, setDocAvatarPreview] = useState("");
 
-  const navigateTo = useNavigate();
+  
 
   const departmentsArray = [
     "Pediatrics",
@@ -256,7 +257,7 @@ const AddNewDoctor = () => {
       formData.append("nic", nic);
       formData.append("dob", dob);
       formData.append("gender", gender);
-      formData.append("doctorDepartment", doctorDepartment);
+      formData.append("docterDepatment", docterDepatement);
       formData.append("docAvatar", docAvatar);
       await axios
         .post("http://localhost:4000/api/v1/user/docter/addnew", formData, {
@@ -266,7 +267,7 @@ const AddNewDoctor = () => {
         .then((res) => {
           alert(res.data.message);
           setIsAuthenticated(true);
-          navigateTo("/");
+          // navigateTo("/");
           setFirstName("");
           setLastName("");
           setEmail("");
@@ -275,11 +276,27 @@ const AddNewDoctor = () => {
           setDob("");
           setGender("");
           setPassword("");
+          setDocterDepatment("")
+          // console.log("hddj")
         });
     } catch (error) {
       alert(error.response.data.message);
     }
   };
+  console.log("Form Data:", {
+    firstName,
+    lastName,
+    email,
+    phone,
+    nic,
+   gender,
+    password,
+    docterDepatement,
+    docAvatar,
+    dob
+  }); 
+    
+
   if (!isAuthenticated) {
     return (
       <div className="w-full min-h-screen md:px-40  bg-slate-700 flex justify-center items-center">
@@ -374,8 +391,8 @@ const AddNewDoctor = () => {
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               />
               <select
-                value={doctorDepartment}
-                onChange={(e) => setDoctorDepartment(e.target.value)}
+                value={docterDepatement}
+                onChange={(e) => setDocterDepatment(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
               >
                 <option value="">Select Department</option>

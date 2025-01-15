@@ -170,19 +170,19 @@ export const addNewDoc = catchAsyncError(async (req, res, next) => {
         gender,
         dob,
         nic,
-        DocterDepatement,
+        docterDepatement,
     } = req.body;
 
     if (
         !firstName ||
         !lastName ||
-        !email ||
+        !email || 
         !phone ||
         !password ||
         !gender ||
         !dob ||
         !nic ||
-        !DocterDepatement
+        !docterDepatement
     ) {
         return next(new ErrorHandler("Please fill all the details", 400));
     }
@@ -209,7 +209,7 @@ export const addNewDoc = catchAsyncError(async (req, res, next) => {
         gender,
         dob,
         nic,
-        DocterDepatement,
+        docterDepatement,
         role: "Docter",
         docAvatar: {
             public_id: cloudinaryResponse.public_id,
@@ -222,5 +222,6 @@ export const addNewDoc = catchAsyncError(async (req, res, next) => {
         doctor,
     });
 });
+
 
 

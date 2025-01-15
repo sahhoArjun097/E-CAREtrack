@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
-  const [email, setEmail] = useState("patientarin@gmail.com");
-  const [password, setPassword] = useState("patient@2025");
-  const [confirmPassword, setConfirmPassword] = useState("patient@2025");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {

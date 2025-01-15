@@ -13,19 +13,20 @@ import Login from "./pages/Login";
 
 
 function App() {
-  const {setIsAuthenticated,setUser} = useContext(Context);
+  const {setIsAuthenticated, admin, setAdmin} = useContext(Context);
   useEffect(()=>{
     const fetchUser = async ()=>{
         try {
           const res = await axios.get("http://localhost:4000/api/v1/user/admin/me",{withCredentials:true});
           setIsAuthenticated(true)
-          setUser(res.data.message);
+          // setAdmin(res.data.message);
           // console.log(setUser)
           
-          setUser(res.data.user)
+          setAdmin(res.data.user)
         } catch (error) {
           setIsAuthenticated(false)
           console.log(error)
+          setAdmin({});
          
         }
     };

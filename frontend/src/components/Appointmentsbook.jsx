@@ -28,6 +28,7 @@ const Appointmentsbook = () => {
       { withCredentials: true }
     );
     setDocters(data.docs);
+    console.log(data.docs)
   };
   useEffect(() => {
     fetchDocters();
@@ -220,7 +221,7 @@ const Appointmentsbook = () => {
               disabled={!department}>
               <option value="">Select Doctor</option>
               {docters
-                .filter((docter) => docter.DocterDepatement === department)
+                .filter((docter) => docter.docterDepatement === department)
                 .map((docter, index) => (
                   <option
                     value={`${docter.firstName} ${docter.lastName}`}

@@ -51,7 +51,7 @@ role:{
     required:true,
     enum:["Admin","Patient","Docter"],
 },
-DocterDepatement:{
+docterDepatement:{
     type:String,
 
 },
