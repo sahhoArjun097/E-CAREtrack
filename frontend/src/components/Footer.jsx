@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 const Footer = () => {
   return (
     <footer className="h-full w-full  bg-gradient-to-t from-blue-100 via-purple-100 to-pink-100">{/* bg-gradient-to-t  from-black via-purple-50 to-black */}
-      <div className="container p-24 mx-auto flex flex-wrap justify-between items-start gap-12">
+      <div className="container p-10 md:px-24 mx-auto flex flex-wrap justify-between items-start gap-8">
         {/* Logo and Description */}
         <div className="flex  flex-col items-start space-y-4">
           <img
@@ -18,21 +19,23 @@ const Footer = () => {
         {/* Quick Links */}
         <div>
           <h2 className="text-lg font-semibold mb-4 text-gray-600">Quick Links</h2>
-          <ul className="space-y-2">
-            <li>
-              <a href="/" className="text-gray-600 hover:text-teal-600 text-base">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/appointments" className="text-gray-600 hover:text-teal-600 text-base">
-                Appointments
-              </a>
-            </li>
-            <li>
-              <a href="/aboutus" className="text-gray-600 hover:text-teal-600 text-base">
-                About Us                </a>
-            </li>
+          <ul className="space-y-2 ">
+            <div className="w-full h-full flex flex-col gap-2">
+            <Link to="/" className="text-gray-600 hover:text-teal-600 text-base">
+                        Home
+            </Link>
+            
+            <Link to="/appointments" className="text-gray-600 hover:text-teal-600 text-base">
+                        Appointments 
+            </Link>
+            <Link to="/aboutus" className="text-gray-600 hover:text-teal-600 text-base">
+                        About Us
+            </Link>
+
+            </div>
+           
+            
+          
           </ul>
         </div>
 
