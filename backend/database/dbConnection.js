@@ -1,5 +1,5 @@
 import mongoose  from "mongoose";
-import config from "../config";
+import config from "../config/index.js";
 export const dbConnection =()=>{
     mongoose.connect(config.MONGO_URL,{
         dbName:"HOSPITAL_MANAGEMENT",
