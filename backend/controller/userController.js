@@ -170,8 +170,9 @@ export const addNewDoc = catchAsyncError(async (req, res, next) => {
         gender,
         dob,
         nic,
-        docterDepatement,
+        docterDepatment,
     } = req.body;
+    console.log(req.body)
 
     if (
         !firstName ||
@@ -182,7 +183,7 @@ export const addNewDoc = catchAsyncError(async (req, res, next) => {
         !gender ||
         !dob ||
         !nic ||
-        !docterDepatement
+        !docterDepatment
     ) {
         return next(new ErrorHandler("Please fill all the details", 400));
     }
@@ -209,7 +210,7 @@ export const addNewDoc = catchAsyncError(async (req, res, next) => {
         gender,
         dob,
         nic,
-        docterDepatement,
+        docterDepatment,
         role: "Docter",
         docAvatar: {
             public_id: cloudinaryResponse.public_id,

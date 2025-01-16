@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: ["Admin", "Patient", "Docter"],
   },
-  docterDepatement: {
+  docterDepatment: {
     type: String,
   },
   docAvatar: {

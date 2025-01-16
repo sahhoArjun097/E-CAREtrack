@@ -59,7 +59,7 @@ const Doctor = () => {
               {doctor.firstName} {doctor.lastName}
             </h2>
             <p className="text-gray-600">
-              <strong>Department:</strong> {doctor.docterDepatement}
+              <strong>Department:</strong> {doctor.docterDepatment}
             </p>
             <p className="text-gray-600">
               <strong>Email:</strong> {doctor.email}
