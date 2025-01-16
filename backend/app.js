@@ -1,5 +1,4 @@
 import express from "express";
-import { config } from "dotenv"; // connect to config file
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { dbConnection } from "./database/dbConnection.js";
@@ -8,10 +7,10 @@ import messageRouter from "./router/messageRouter.js"
 import { errorMiddleware } from "./middlewares/errorMiddleware.js"
 import userRouter from "./router/userRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
+import config from "./config/index.js";
 const app = express();
-config({ path: "./config/config.env" });
 // app.use(cors({
-//   origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+//   origin: [config.FRONTEND_URL, config.DASHBOARD_URL],
 //   methods: ["GET", "DELETE", "POST", "PUT"],
 //   credentials: true,
 // }));
