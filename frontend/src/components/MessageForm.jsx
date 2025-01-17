@@ -1,7 +1,7 @@
 import axios from "axios";
-import  { useState } from "react";
+import { useState } from "react";
 // import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const MessageForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -15,7 +15,7 @@ const MessageForm = () => {
     try {
       await axios
         .post(
-          "http://localhost:4000/api/v1/message/send",
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/message/send`,
           { firstName, lastName, email, phone, message },
           {
             withCredentials: true,
@@ -23,8 +23,8 @@ const MessageForm = () => {
           }
         )
         .then((res) => {
-            alert("message hase send successfully")
-         
+          alert("message hase send successfully");
+
           console.log(res.data.message);
           setFirstName("");
           setLastName("");
@@ -33,15 +33,17 @@ const MessageForm = () => {
           setMessage("");
         });
     } catch (error) {
-        alert(error.response.data.message)
-        console.error("Error sending message:", error); 
+      alert(error.response.data.message);
+      console.error("Error sending message:", error);
     }
   };
 
   return (
     <>
       <div className="container mx-auto max-w-4xl p-6 bg-white rounded-lg shadow-lg mt-8">
-        <h2 className="text-3xl font-semibold text-center text-gray-700 mb-6">Send Us A Message</h2>
+        <h2 className="text-3xl font-semibold text-center text-gray-700 mb-6">
+          Send Us A Message
+        </h2>
         <form onSubmit={handleMessage} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
