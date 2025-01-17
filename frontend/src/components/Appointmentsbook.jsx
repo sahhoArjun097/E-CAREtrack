@@ -3,7 +3,7 @@ import axios from "axios";
 const Appointmentsbook = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
+
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [nic, setNic] = useState("");
@@ -24,15 +24,14 @@ const Appointmentsbook = () => {
   ];
   const fetchDocters = async () => {
     const { data } = await axios.get(
-      "http://localhost:4000/api/v1/user/docters",
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/docters`,
       { withCredentials: true }
     );
     setDocters(data.docs);
-    console.log(data.docs)
+    console.log(data.docs);
   };
   useEffect(() => {
     fetchDocters();
-
   }, []);
   const handleAppointmentDateChange = (e) => {
     const rawDate = e.target.value.replace(/[^\d]/g, ""); // Remove non-numeric characters
@@ -42,11 +41,14 @@ const Appointmentsbook = () => {
         formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2)}`;
       }
       if (rawDate.length > 4) {
-        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2, 4)}/${rawDate.slice(4)}`;
+        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(
+          2,
+          4
+        )}/${rawDate.slice(4)}`;
       }
       setAppointmentDate(formattedDate);
     }
-  }
+  };
 
   const handleDateChange = (e) => {
     const rawDate = e.target.value.replace(/[^\d]/g, ""); // Remove non-numeric characters
@@ -56,18 +58,21 @@ const Appointmentsbook = () => {
         formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2)}`;
       }
       if (rawDate.length > 4) {
-        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(2, 4)}/${rawDate.slice(4)}`;
+        formattedDate = `${rawDate.slice(0, 2)}/${rawDate.slice(
+          2,
+          4
+        )}/${rawDate.slice(4)}`;
       }
       setDob(formattedDate);
     }
-  }
+  };
   const handleAppointments = async (e) => {
     e.preventDefault();
     // Add form submission logic here
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/appointment/post",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/appointment/post`,
         {
           firstName,
           lastName,
@@ -102,16 +107,16 @@ const Appointmentsbook = () => {
         setDocterLastName(""),
         setHasVisited(""),
         setAddress("");
-
     } catch (error) {
-      alert(error.response.data.message)
-
+      alert(error.response.data.message);
     }
   };
   return (
     <div className=" mx-auto  p-16 md:p-24  bg-gradient-to-b h-full w-screen to-blue-100 via-purple-50 from-pink-100 shadow-md rounded-lg">
       <div className="flex flex-col gap-5">
-        <h1 className="text-4xl md:text-6xl font-bold text-blue-900">Book an Appointment</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-blue-900">
+          Book an Appointment
+        </h1>
         <form onSubmit={handleAppointments} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
@@ -166,8 +171,6 @@ const Appointmentsbook = () => {
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
@@ -179,7 +182,6 @@ const Appointmentsbook = () => {
               <option value="Other">Other</option>
             </select>
 
-
             <input
               type="text"
               placeholder="Appointment Date"
@@ -187,19 +189,18 @@ const Appointmentsbook = () => {
               onChange={handleAppointmentDateChange}
               className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-
           </div>
 
           <div className=" flex gap-3">
-
             <select
               className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={department}
               onChange={(e) => {
                 setDepartment(e.target.value);
-                setDocterFirstName('');
-                setDocterLastName('');
-              }}>
+                setDocterFirstName("");
+                setDocterLastName("");
+              }}
+            >
               <option value="" disabled>
                 Select Department
               </option>
@@ -218,7 +219,8 @@ const Appointmentsbook = () => {
                 setDocterFirstName(firstName);
                 setDocterLastName(lastName);
               }}
-              disabled={!department}>
+              disabled={!department}
+            >
               <option value="">Select Doctor</option>
               {docters
                 .filter((docter) => docter.docterDepatment === department)
@@ -248,9 +250,6 @@ const Appointmentsbook = () => {
               onChange={(e) => setHasVisited(e.target.checked)}
               style={{ flex: "none", width: "20px" }}
             />
-
-
-
           </div>
 
           <div className="w-full justify-center items-center flex ">

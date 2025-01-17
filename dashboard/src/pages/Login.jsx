@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Context } from "../main";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/user/login",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/login`,
         { email, password, confirmPassword, role: "Admin" },
         {
           withCredentials: true,
@@ -32,27 +32,25 @@ const Login = () => {
     }
   };
 
-
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
 
-
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800">
-
-
-      <div
-        className="min-h-screen w-[100vw] flex items-center justify-center bg-cover bg-center loginBackgroundImage"
-      >
+      <div className="min-h-screen w-[100vw] flex items-center justify-center bg-cover bg-center loginBackgroundImage">
         <div className="bg-opacity-0 backdrop-blur-xl p-8 rounded-lg shadow-lg sm:w-full max-w-md w-[95%]">
-          <h1 className="text-3xl font-bold text-center text-purple-300 mb-6">Login</h1>
-          <form onSubmit={handleLogin} >
+          <h1 className="text-3xl font-bold text-center text-purple-300 mb-6">
+            Login
+          </h1>
+          <form onSubmit={handleLogin}>
             <div className="mb-6">
-              <label htmlFor="email" className="block text-purple-300 text-md pb-2 font-semibold mb-1">
+              <label
+                htmlFor="email"
+                className="block text-purple-300 text-md pb-2 font-semibold mb-1"
+              >
                 Email
               </label>
               <input
@@ -61,15 +59,16 @@ const Login = () => {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-
-
                 required
                 className="w-[90%] ml-4 py-3 border-b-2 border-gray-100 border-opacity-30 backdrop-blur-2xl bg-transparent focus:outline-none focus:border-opacity-100 bg-opacity-10"
                 placeholder="Enter your email"
               />
             </div>
             <div className="mb-12">
-              <label htmlFor="password" className="block text-purple-300 text-md pb-2 font-semibold mb-1">
+              <label
+                htmlFor="password"
+                className="block text-purple-300 text-md pb-2 font-semibold mb-1"
+              >
                 Password
               </label>
               <input
@@ -104,15 +103,20 @@ const Login = () => {
               <button
                 type="submit"
                 className="  py-2 px-4  text-white font-semibold rounded-lg hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-200"
-              > Login
-
+              >
+                {" "}
+                Login
               </button>
             </div>
-
-
           </form>
           <p className="text-center text-purple-400 text-md pb-2 mt-4">
-            Don&apos;t have an account? <Link to="/register" className="text-purple-200 hover:underline cursor-pointer">Sign up</Link>
+            Don&apos;t have an account?{" "}
+            <Link
+              to="/register"
+              className="text-purple-200 hover:underline cursor-pointer"
+            >
+              Sign up
+            </Link>
           </p>
         </div>
       </div>

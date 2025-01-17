@@ -33,7 +33,7 @@
 //       });
 
 //       const { data } = await axios.post(
-//         "http://localhost:4000/api/v1/user/doctor/addnew",
+//         `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/doctor/addnew`,
 //         formDataToSend,
 //         {
 //           withCredentials: true,
@@ -202,7 +202,7 @@
 // export default AddNewDoctor;
 
 // import { Navigate, useNavigate } from "react-router-dom";
-import  { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../main";
 import axios from "axios";
 
@@ -220,8 +220,6 @@ const AddNewDoctor = () => {
   const [docterDepatment, setDocterDepatment] = useState("");
   const [docAvatar, setDocAvatar] = useState("");
   const [docAvatarPreview, setDocAvatarPreview] = useState("");
-
-  
 
   const departmentsArray = [
     "Pediatrics",
@@ -260,10 +258,14 @@ const AddNewDoctor = () => {
       formData.append("docterDepatment", docterDepatment);
       formData.append("docAvatar", docAvatar);
       await axios
-        .post("http://localhost:4000/api/v1/user/docter/addnew", formData, {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        })
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/docter/addnew`,
+          formData,
+          {
+            withCredentials: true,
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        )
         .then((res) => {
           alert(res.data.message);
           setIsAuthenticated(true);
@@ -276,7 +278,7 @@ const AddNewDoctor = () => {
           setDob("");
           setGender("");
           setPassword("");
-          setDocterDepatment("")
+          setDocterDepatment("");
           // console.log("hddj")
         });
     } catch (error) {
@@ -289,24 +291,21 @@ const AddNewDoctor = () => {
     email,
     phone,
     nic,
-   gender,
+    gender,
     password,
     docterDepatment,
     docAvatar,
-    dob
-  }); 
-    
+    dob,
+  });
 
   if (!isAuthenticated) {
     return (
       <div className="w-full min-h-screen md:px-40  bg-slate-700 flex justify-center items-center">
         <div className="w-full   px-52 justify-center items-center ">
-        <p className="text-xl font-semibold text-red-500">
-          Access denied. Please log in as an admin to view this page.
-        </p>
-
+          <p className="text-xl font-semibold text-red-500">
+            Access denied. Please log in as an admin to view this page.
+          </p>
         </div>
-        
       </div>
     );
   }
@@ -321,7 +320,9 @@ const AddNewDoctor = () => {
           <div className="flex flex-col md:flex-row items-start gap-6">
             <div className="w-full md:w-1/3 text-center">
               <img
-                src={docAvatarPreview ? `${docAvatarPreview}` : "/docHolder.jpg"}
+                src={
+                  docAvatarPreview ? `${docAvatarPreview}` : "/docHolder.jpg"
+                }
                 alt="Doctor Avatar"
                 className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
               />
