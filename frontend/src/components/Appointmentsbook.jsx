@@ -223,7 +223,7 @@ const Appointmentsbook = () => {
             >
               <option value="">Select Doctor</option>
               {docters
-                .filter((docter) => docter.docterDepatment === department)
+                .filter((docter) => docter.docterDepatement=== department)
                 .map((docter, index) => (
                   <option
                     value={`${docter.firstName} ${docter.lastName}`}

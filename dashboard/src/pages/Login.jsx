@@ -22,21 +22,33 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      alert(response.data.message);
-      setIsAuthenticated(true);
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+      const {token} = response.data;
+      if(token){
+        localStorage.setItem("authToken", token);
+        alert(response.data.message);
+        setIsAuthenticated(true);
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+      }
+    
     } catch (error) {
       alert(error.response?.data?.message);
     }
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  
     if (isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, setIsAuthenticated]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800">

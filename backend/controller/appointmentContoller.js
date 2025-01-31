@@ -40,7 +40,7 @@ export const postAppointmnet = catchAsyncError(async (req, res, next) => {
         firstName: docter_firstName,
         lastName: docter_lastName,
         role: "Docter",
-        docterDepatement: department,
+        docterDepatment: department,
 
     })
     console.log(ss);
@@ -49,7 +49,7 @@ export const postAppointmnet = catchAsyncError(async (req, res, next) => {
         firstName: docter_firstName,
         lastName: docter_lastName,
         role: "Docter",
-        docterDepatement: department,
+        docterDepatment: department,
 
     })
     if (isConflict.length === 0) {

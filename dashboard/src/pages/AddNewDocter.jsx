@@ -51,7 +51,7 @@ const AddNewDoctor = () => {
       formData.append("nic", nic);
       formData.append("dob", dob);
       formData.append("gender", gender);
-      formData.append("doctorDepartment", doctorDepartment);
+      formData.append("docterDepartment", doctorDepartment);
       formData.append("docAvatar", docAvatar);
 
       const response = await axios.post(

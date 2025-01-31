@@ -12,7 +12,7 @@ const Navbar = () => {
     navigate("/login");
   };
   const handleLogOut = async () => {
-    // console.log("dsudqwuihe")
+
     try {
       const res = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/patient/logout`,
