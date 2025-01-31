@@ -9,7 +9,7 @@ export const generateToken = (user, message, statusCode, res) => {
         maxAge: config.COOKIE_EXPIRES * 24 * 60 * 60 * 1000, 
         httpOnly: true, // Ensures the cookie is inaccessible to JavaScript
         secure: true, // Set to true if using HTTPS (use `false` in local dev)
-        sameSite: "strict", 
+        // sameSite: "strict", 
     }).json({
         success: true,
         message,
