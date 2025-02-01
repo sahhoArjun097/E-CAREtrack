@@ -9,12 +9,12 @@ import userRouter from "./router/userRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
 import config from "./config/index.js";
 const app = express();
-// app.use(cors({
-//   origin: [config.FRONTEND_URL, config.DASHBOARD_URL],
-//   methods: ["GET", "DELETE", "POST", "PUT"],
-//   credentials: true,
-// }));
-app.use(cors({ origin: '*', methods: ["GET", "DELETE", "POST", "PUT"], credentials: true }));
+app.use(cors({
+  origin: [config.FRONTEND_URL, config.DASHBOARD_URL],
+  methods: ["GET", "DELETE", "POST", "PUT"],
+  credentials: true,
+}));
+// app.use(cors({ origin: '*', credentials: true }));
 
 app.use(cookieParser())
 app.use(express.json())// use to transform data into json data as in the form of string
