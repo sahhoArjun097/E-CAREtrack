@@ -13,7 +13,7 @@ const AddNewDoctor = () => {
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
-  const [doctorDepartment, setDoctorDepartment] = useState("");
+  const [docterDepatment, setDocterDepartment] = useState("");
   const [docAvatar, setDocAvatar] = useState("");
   const [docAvatarPreview, setDocAvatarPreview] = useState("");
 
@@ -51,7 +51,7 @@ const AddNewDoctor = () => {
       formData.append("nic", nic);
       formData.append("dob", dob);
       formData.append("gender", gender);
-      formData.append("docterDepartment", doctorDepartment);
+      formData.append("docterDepartment", docterDepatment);
       formData.append("docAvatar", docAvatar);
 
       const response = await axios.post(
@@ -74,7 +74,7 @@ const AddNewDoctor = () => {
       setDob("");
       setGender("");
       setPassword("");
-      setDoctorDepartment("");
+      setDocterDepartment("");
     } catch (error) {
       alert(error.response.data.message);
     }
@@ -171,8 +171,8 @@ const AddNewDoctor = () => {
               className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             <select
-              value={doctorDepartment}
-              onChange={(e) => setDoctorDepartment(e.target.value)}
+              value={docterDepatment}
+              onChange={(e) => setDocterDepartment(e.target.value)}
               className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="">Select Department</option>

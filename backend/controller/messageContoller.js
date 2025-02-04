@@ -23,9 +23,7 @@ export const getAllMessages = catchAsyncError(async(req,res,next)=>{
     const message = await Message.find();
     res.status(200).json({
         success: true,
-        message,
-    
-        
+        message,    
     })})
 
 // import { catchAsyncError } from "../middlewares/catchAsyncErrors.js";
