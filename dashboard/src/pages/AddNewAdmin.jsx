@@ -2,7 +2,7 @@
 
 function AddNewAdmin() {
   return (
-    <div className="bg-black">AddNewAdmin</div>
+    <div className="bg-black">AddNehdhdwAdmin</div>
   )
 }
 
